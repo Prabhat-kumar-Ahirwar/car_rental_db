@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CarRentalSpringApplication {
     // so this is the spring boot application inital step
-    //gi7y7feedfrfery6uo80mmmm
+    //gi7y7feedfrf
 	public static void main(String[] args) {
 		SpringApplication.run(CarRentalSpringApplication.class, args);
 	}
