@@ -6,6 +6,7 @@ import com.DBMSproject.entity.User;
 import com.DBMSproject.enums.UserRole;
 import com.DBMSproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,13 +14,16 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto createCustomer(SignupRequest signupRequest) {
         User user = new User();
         user.setName(signupRequest.getName());
         user.setEmail(signupRequest.getEmail());
-        user.setPassword(signupRequest.getPassword());
+        //user.setPassword(signupRequest.getPassword());
+        user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+
         user.setUserRole(UserRole.CUSTOMER);
 
         User createdUser = userRepository.save(user);
@@ -37,4 +41,11 @@ public class AuthServiceImpl implements AuthService {
     public boolean hasCustomerWithEmail(String email) {
         return userRepository.findFirstByEmail(email).isPresent();
     }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findFirstByEmail(email).orElse(null);
+
+    }
+
 }
