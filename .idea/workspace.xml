@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d532d212-3294-4c12-857b-e4c6972d736f" name="Changes" comment="this is commmit from priyanshi" />
+    <list default="true" id="d532d212-3294-4c12-857b-e4c6972d736f" name="Changes" comment="this is commmit from priyanshi">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DBMSproject/controller/AdminCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DBMSproject/controller/AdminCarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DBMSproject/services/Auth/AdminCarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DBMSproject/services/Auth/AdminCarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DBMSproject/controller/AdminCarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DBMSproject/controller/AdminCarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DBMSproject/services/Auth/AdminCarService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DBMSproject/services/Auth/AdminCarService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +83,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Prabhat-ahirwar1",
+    "git-widget-placeholder": "Merging priyanshiKhorwal",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/priya/car_rental_db",
