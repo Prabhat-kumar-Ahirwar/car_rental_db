@@ -1,0 +1,38 @@
+Index: Car_Rental_Spring (1)/Car_Rental_Spring/src/main/java/com/DBMSproject/CarRentalSpringApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.DBMSproject;\r\n\r\nimport org.springframework.boot.SpringApplication;\r\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\r\n\r\n@SpringBootApplication\r\npublic class CarRentalSpringApplication {\r\n    // so this is the spring boot application inital step\r\n    //gi7y7feedfrf\r\n\tpublic static void main(String[] args) {\r\n\t\tSpringApplication.run(CarRentalSpringApplication.class, args);\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Car_Rental_Spring (1)/Car_Rental_Spring/src/main/java/com/DBMSproject/CarRentalSpringApplication.java b/Car_Rental_Spring (1)/Car_Rental_Spring/src/main/java/com/DBMSproject/CarRentalSpringApplication.java
+--- a/Car_Rental_Spring (1)/Car_Rental_Spring/src/main/java/com/DBMSproject/CarRentalSpringApplication.java	(revision 1e489869c1e852c23f9c5b502cd061385174a2a0)
++++ b/Car_Rental_Spring (1)/Car_Rental_Spring/src/main/java/com/DBMSproject/CarRentalSpringApplication.java	(date 1761923942427)
+@@ -5,8 +5,7 @@
+ 
+ @SpringBootApplication
+ public class CarRentalSpringApplication {
+-    // so this is the spring boot application inital step
+-    //gi7y7feedfrf
++
+ 	public static void main(String[] args) {
+ 		SpringApplication.run(CarRentalSpringApplication.class, args);
+ 	}
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"true\" />\r\n      <profile name=\"Annotation profile for Car_Rental_Spring\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <processorPath useClasspath=\"false\">\r\n          <entry name=\"$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar\" />\r\n          <entry name=\"$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar\" />\r\n        </processorPath>\r\n        <module name=\"Car_Rental_Spring\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"Car_Rental_Spring\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 1e489869c1e852c23f9c5b502cd061385174a2a0)
++++ b/.idea/compiler.xml	(date 1762002172586)
+@@ -9,7 +9,6 @@
+         <outputRelativeToContentRoot value="true" />
+         <processorPath useClasspath="false">
+           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+         </processorPath>
+         <module name="Car_Rental_Spring" />
+       </profile>

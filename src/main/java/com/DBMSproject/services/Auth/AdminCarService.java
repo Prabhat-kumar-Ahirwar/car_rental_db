@@ -4,9 +4,12 @@ import com.DBMSproject.entity.Car;
 import com.DBMSproject.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+=======
+>>>>>>> 43516dd4d93d0c4e4193769dda22ff3049d6423b
 import java.util.List;
 import java.util.Optional;
 
@@ -16,17 +19,26 @@ public class AdminCarService {
     @Autowired
     private CarRepository carRepository;
 
+<<<<<<< HEAD
     // ✅ Save a new car
+=======
+>>>>>>> 43516dd4d93d0c4e4193769dda22ff3049d6423b
     public Car saveCar(Car car) {
         return carRepository.save(car);
     }
 
+<<<<<<< HEAD
     // ✅ Get all cars
+=======
+>>>>>>> 43516dd4d93d0c4e4193769dda22ff3049d6423b
     public List<Car> getAllCars() {
         return carRepository.findAll();
     }
 
+<<<<<<< HEAD
     // ✅ Delete car by ID
+=======
+>>>>>>> 43516dd4d93d0c4e4193769dda22ff3049d6423b
     public boolean deleteCar(Long id) {
         Optional<Car> car = carRepository.findById(id);
         if (car.isPresent()) {
@@ -35,6 +47,7 @@ public class AdminCarService {
         }
         return false;
     }
+<<<<<<< HEAD
 
     // ✅ Get car by ID
     public Car getCarById(Long id) {
@@ -73,4 +86,6 @@ public class AdminCarService {
         }
         return null;
     }
+=======
+>>>>>>> 43516dd4d93d0c4e4193769dda22ff3049d6423b
 }

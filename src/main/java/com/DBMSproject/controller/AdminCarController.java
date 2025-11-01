@@ -62,6 +62,7 @@ public class AdminCarController {
         else
             return ResponseEntity.status(404).body("Car not found");
     }
+<<<<<<< HEAD
     // ✅ Get car by ID (for pre-filling update form)
     @GetMapping("/car/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable Long id) {
@@ -94,5 +95,7 @@ public class AdminCarController {
             return ResponseEntity.status(404).body(null);
     }
 
+=======
+>>>>>>> 43516dd4d93d0c4e4193769dda22ff3049d6423b
 }
 
