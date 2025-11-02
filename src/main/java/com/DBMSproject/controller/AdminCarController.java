@@ -2,8 +2,10 @@ package com.DBMSproject.controller;
 
 
 
+import com.DBMSproject.dto.CarSearchDTO;
 import com.DBMSproject.entity.Car;
 import com.DBMSproject.services.Auth.AdminCarService;
+import com.DBMSproject.services.Auth.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,5 +64,33 @@ public class AdminCarController {
         else
             return ResponseEntity.status(404).body("Car not found");
     }
+    // ✅ Update existing car
+    @PutMapping("/car/{id}")
+    public ResponseEntity<Car> updateCar(
+            @PathVariable Long id,
+            @RequestParam(value = "brand", required = false) String brand,
+            @RequestParam(value = "color", required = false) String color,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "type", required = false) String type,
+            @RequestParam(value = "transmission", required = false) String transmission,
+            @RequestParam(value = "description", required = false) String description,
+            @RequestParam(value = "price", required = false) Double price,
+            @RequestParam(value = "year", required = false) Integer year,
+            @RequestParam(value = "image", required = false) MultipartFile image
+    ) throws IOException {
+        Car updatedCar = adminCarService.updateCar(id, brand, color, name, type, transmission, description, price, year, image);
+        return ResponseEntity.ok(updatedCar);
+    }
+    // ✅ Search cars (admin)
+    @Autowired
+    private CarService carService;
+
+    @PostMapping("/car/search")
+    public ResponseEntity<List<Car>> searchCars(@RequestBody CarSearchDTO searchDTO) {
+        return ResponseEntity.ok(carService.searchCars(searchDTO));
+    }
+
+
+
 }
 
