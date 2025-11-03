@@ -24,4 +24,9 @@ public class CarService {
                 searchDTO.getYear()
         );
     }
+
+    // ✅ Add this method
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
+    }
 }

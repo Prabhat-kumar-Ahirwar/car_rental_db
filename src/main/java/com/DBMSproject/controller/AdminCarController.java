@@ -1,7 +1,5 @@
 package com.DBMSproject.controller;
 
-
-
 import com.DBMSproject.dto.CarSearchDTO;
 import com.DBMSproject.entity.Car;
 import com.DBMSproject.services.Auth.AdminCarService;
@@ -16,11 +14,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "http://localhost:3000") // or your frontend port
+@CrossOrigin(origins = "http://localhost:3000") // frontend URL
 public class AdminCarController {
 
     @Autowired
     private AdminCarService adminCarService;
+
+    @Autowired
+    private CarService carService;
 
     // ✅ Add new car
     @PostMapping("/car")
@@ -55,6 +56,52 @@ public class AdminCarController {
         return ResponseEntity.ok(adminCarService.getAllCars());
     }
 
+    // ✅ Get car by ID (for edit page)
+    @GetMapping("/car/{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable Long id) {
+        Car car = adminCarService.getCarById(id);
+        if (car != null) {
+            return ResponseEntity.ok(car);
+        } else {
+            return ResponseEntity.status(404).body(null);
+        }
+    }
+
+    // ✅ Update car by ID
+    @PutMapping("/car/{id}")
+    public ResponseEntity<Car> updateCar(
+            @PathVariable Long id,
+            @RequestParam("brand") String brand,
+            @RequestParam("color") String color,
+            @RequestParam("name") String name,
+            @RequestParam("type") String type,
+            @RequestParam("transmission") String transmission,
+            @RequestParam("description") String description,
+            @RequestParam("price") double price,
+            @RequestParam("year") int year,
+            @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
+
+        Car existingCar = adminCarService.getCarById(id);
+        if (existingCar == null) {
+            return ResponseEntity.status(404).body(null);
+        }
+
+        existingCar.setBrand(brand);
+        existingCar.setColor(color);
+        existingCar.setName(name);
+        existingCar.setType(type);
+        existingCar.setTransmission(transmission);
+        existingCar.setDescription(description);
+        existingCar.setPrice(price);
+        existingCar.setYear(year);
+
+        if (image != null && !image.isEmpty()) {
+            existingCar.setImage(image.getBytes());
+        }
+
+        return ResponseEntity.ok(adminCarService.saveCar(existingCar));
+    }
+
     // ✅ Delete car
     @DeleteMapping("/car/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable Long id) {
@@ -64,33 +111,10 @@ public class AdminCarController {
         else
             return ResponseEntity.status(404).body("Car not found");
     }
-    // ✅ Update existing car
-    @PutMapping("/car/{id}")
-    public ResponseEntity<Car> updateCar(
-            @PathVariable Long id,
-            @RequestParam(value = "brand", required = false) String brand,
-            @RequestParam(value = "color", required = false) String color,
-            @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "type", required = false) String type,
-            @RequestParam(value = "transmission", required = false) String transmission,
-            @RequestParam(value = "description", required = false) String description,
-            @RequestParam(value = "price", required = false) Double price,
-            @RequestParam(value = "year", required = false) Integer year,
-            @RequestParam(value = "image", required = false) MultipartFile image
-    ) throws IOException {
-        Car updatedCar = adminCarService.updateCar(id, brand, color, name, type, transmission, description, price, year, image);
-        return ResponseEntity.ok(updatedCar);
-    }
-    // ✅ Search cars (admin)
-    @Autowired
-    private CarService carService;
 
+    // ✅ Search cars (admin)
     @PostMapping("/car/search")
     public ResponseEntity<List<Car>> searchCars(@RequestBody CarSearchDTO searchDTO) {
         return ResponseEntity.ok(carService.searchCars(searchDTO));
     }
-
-
-
 }
-

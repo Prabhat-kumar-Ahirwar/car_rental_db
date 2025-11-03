@@ -22,13 +22,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final CustomUserDetailsService customUserDetailsService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain)
             throws ServletException, IOException {
 
         String requestPath = request.getRequestURI();
         System.out.println("JWT Filter Executed for: " + requestPath);
 
-        // ✅ Only bypass authentication for /api/auth/**
+        // ✅ Allow unauthenticated access to authentication endpoints
         if (requestPath.startsWith("/api/auth")) {
             filterChain.doFilter(request, response);
             return;
@@ -48,14 +50,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(userEmail);
 
-            if (jwtUtils.isTokenValid(jwt, userDetails)) {
+            // ✅ FIXED: Pass username instead of whole UserDetails object
+            if (jwtUtils.isTokenValid(jwt, userDetails.getUsername())) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails,
                                 null,
                                 userDetails.getAuthorities()
                         );
-                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+                authToken.setDetails(
+                        new WebAuthenticationDetailsSource().buildDetails(request)
+                );
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }

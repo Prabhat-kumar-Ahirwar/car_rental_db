@@ -41,7 +41,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         try {
-            // 1️⃣ Authenticate credentials
+            // Authenticate user
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             loginRequest.getEmail(),
@@ -49,12 +49,13 @@ public class AuthController {
                     )
             );
 
-            // 2️⃣ Load user and generate token
+            // Fetch user details
             User user = authService.getUserByEmail(loginRequest.getEmail());
             if (user == null) {
                 return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
             }
 
+            // Generate token
             String token = jwtUtils.generateToken(user.getEmail());
 
             JwtResponse jwtResponse = new JwtResponse(
@@ -64,7 +65,7 @@ public class AuthController {
                     user.getUserRole().toString()
             );
 
-            return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
+            return ResponseEntity.ok(jwtResponse);
 
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>("Invalid email or password", HttpStatus.UNAUTHORIZED);
@@ -73,4 +74,5 @@ public class AuthController {
             return new ResponseEntity<>("Login failed", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }

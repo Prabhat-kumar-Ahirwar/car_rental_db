@@ -69,5 +69,10 @@ public class AdminCarService {
 
         Example<Car> example = Example.of(exampleCar, matcher);
         return carRepository.findAll(example);
+
     }
+    public Car getCarById(Long id) {
+        return carRepository.findById(id).orElse(null);
+    }
+
 }
